@@ -1,19 +1,11 @@
-# clojure_blog
+# The Faintest Ink
 
-FIXME
+## Introduction
 
-## Prerequisites
+I have always wanted to make a blog and most of the methods have been boring. This is an attempt to make a blog using pure Clojure (as much as possible).
+This is just a side project so commits may be few and far between.
 
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
-
-## Running
-
-To start a web server for the application, run:
-
-    lein ring server
+Thanks for visiting!
 
 ## License
-
-Copyright © 2016 FIXME
+MIT
