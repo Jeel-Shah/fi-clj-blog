@@ -3,9 +3,15 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
+
+  (use '[clojure.string :ony (join split)])
   (use 'hiccup.core)
   (use 'hiccup.page)
   (use 'hiccup.element)
+
+(defn make-title [title]
+  (join "-"
+        (split (.toLowerCase title) #"\s")))
 
 
 (defn generic-page [content]
@@ -26,7 +32,7 @@
 
 
 (defn get-articles []
-  ;; Retrieves all the articles list of maps
+  ;; Retrieves all the articles as a list of maps. We'll use mongodb.
   ;; [{:title "title" :content "content" :date "date"}] <- something like that
   )
 
@@ -37,7 +43,7 @@
                       [:h2 "List of articles"]
                       [:ul
                        (for [x (range 1 4)]
-                         [:li x])])))
+                         [:li (link-to (str "/articles/" x) (str "Article " x))] )])))
 
 
 (defn not-found-page []
@@ -49,6 +55,8 @@
 (defroutes app-routes
   (GET "/" [] (home-page))
   (GET "/articles/:id" [id] (get-article id))
+  (GET "/articles/:title" [title] (get-article title))
+  (GET "/lowercase/:name" [name] (make-title name))
   (route/not-found (not-found-page)))
 
 
