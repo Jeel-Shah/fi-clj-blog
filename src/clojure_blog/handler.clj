@@ -9,6 +9,7 @@
   (use 'hiccup.page)
   (use 'hiccup.element)
 
+
 (defn make-title [title]
   (join "-"
         (split (.toLowerCase title) #"\s")))
@@ -24,6 +25,8 @@
      [:div {:class "container"} content ]]))
 
 
+;; NOTE: Design decision ... Should get-article produce the html or just return a map containing the relevant information and then the calling function
+;; will generate the html?
 
 (defn get-article [id]
   (generic-page (html [:div [:h1 "Welcome to " id]
